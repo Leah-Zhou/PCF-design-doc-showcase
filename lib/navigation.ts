@@ -47,16 +47,23 @@ export function visibleNavigation(): NavGroup[] {
   return navigation.filter((group) => !group.hidden);
 }
 
-export function isActivePath(pathname: string, href: string): boolean {
-  if (href === "/") {
-    return pathname === "/";
+export function normalizePath(pathname: string): string {
+  if (pathname === "/") {
+    return "/";
   }
 
-  return pathname === href;
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+export function isActivePath(pathname: string, href: string): boolean {
+  return normalizePath(pathname) === normalizePath(href);
 }
 
 export function findNavItem(pathname: string): NavItem | undefined {
-  return navigation.flatMap((group) => group.items).find((item) => item.href === pathname);
+  const current = normalizePath(pathname);
+  return navigation
+    .flatMap((group) => group.items)
+    .find((item) => normalizePath(item.href) === current);
 }
 
 export function getAdjacentNav(pathname: string): {
@@ -64,7 +71,9 @@ export function getAdjacentNav(pathname: string): {
   next?: NavItem;
 } {
   const items = visibleNavigation().flatMap((group) => group.items);
-  const index = items.findIndex((item) => item.href === pathname);
+  const index = items.findIndex(
+    (item) => normalizePath(item.href) === normalizePath(pathname),
+  );
 
   if (index === -1) {
     return {};

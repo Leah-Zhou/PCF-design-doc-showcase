@@ -2,7 +2,7 @@
 
 A public-safe design system documentation site for a product design portfolio.
 
-Live site: [leah-zhou.github.io/PCF-design-doc-showcase](https://leah-zhou.github.io/PCF-design-doc-showcase/)
+Live site: [leah-zhou.github.io/design-system-showcase](https://leah-zhou.github.io/design-system-showcase/)
 
 ## Scope
 

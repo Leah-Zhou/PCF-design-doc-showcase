@@ -4,7 +4,7 @@ import type { NextConfig } from "next";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const githubPages = process.env.GITHUB_PAGES === "true";
-const repoName = "PCF-design-doc-showcase";
+const repoName = "design-system-showcase";
 
 const nextConfig: NextConfig = {
   output: "export",
