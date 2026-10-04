@@ -1,0 +1,180 @@
+.ds-button--canvas {
+  width: 335px;
+}
+
+.ds-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: var(--font-weight-semi-bold);
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease,
+    outline-color 150ms ease;
+}
+
+.ds-button:focus {
+  outline: none;
+}
+
+.ds-button:focus-visible,
+.ds-button[data-state="focus"] {
+  outline: var(--stroke-width-semibold) solid var(--color-link-primary);
+  outline-offset: var(--space-2xs);
+}
+
+.ds-button:disabled {
+  cursor: not-allowed;
+}
+
+.ds-button__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+}
+
+.ds-button__icon svg,
+.ds-button__icon > * {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ds-button__label {
+  min-width: 0;
+}
+
+/* Primary */
+
+.ds-button[data-variant="primary"] {
+  background: var(--color-btn-primary-bg-default);
+  color: var(--color-btn-primary-text);
+  border-radius: var(--radius-pill);
+}
+
+.ds-button[data-variant="primary"]:hover:not(:disabled),
+.ds-button[data-variant="primary"]:active:not(:disabled),
+.ds-button[data-variant="primary"][data-state="hover"],
+.ds-button[data-variant="primary"][data-state="pressed"] {
+  background: var(--color-btn-primary-bg-hover);
+}
+
+.ds-button[data-variant="primary"]:disabled {
+  background: var(--color-btn-primary-bg-default);
+  opacity: var(--opacity-40);
+}
+
+/* Secondary — inset stroke so outer size matches primary 55 / 44 */
+
+.ds-button[data-variant="secondary"] {
+  background: transparent;
+  color: var(--color-btn-secondary-text);
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 var(--stroke-width-semibold) var(--color-btn-secondary-border);
+}
+
+.ds-button[data-variant="secondary"]:hover:not(:disabled),
+.ds-button[data-variant="secondary"]:active:not(:disabled),
+.ds-button[data-variant="secondary"][data-state="hover"],
+.ds-button[data-variant="secondary"][data-state="pressed"] {
+  background: var(--color-btn-secondary-bg-hover);
+}
+
+.ds-button[data-variant="secondary"]:disabled {
+  background: transparent;
+  opacity: var(--opacity-40);
+}
+
+/* Tertiary — hover and pressed match default in Figma */
+
+.ds-button[data-variant="tertiary"] {
+  background: transparent;
+  color: var(--color-link-primary);
+}
+
+.ds-button[data-variant="tertiary"]:disabled {
+  color: var(--color-link-primary-disabled);
+}
+
+/* Filled sizes (primary / secondary) */
+
+.ds-button[data-variant="primary"][data-size="lg"],
+.ds-button[data-variant="secondary"][data-size="lg"] {
+  min-height: 55px;
+  padding: var(--space-lg);
+  gap: var(--space-md);
+  font-size: 15px;
+  line-height: normal;
+  --button-icon-size: var(--size-icon-xl);
+}
+
+.ds-button[data-variant="primary"][data-size="sm"],
+.ds-button[data-variant="secondary"][data-size="sm"] {
+  min-width: 136px;
+  padding: var(--space-lg) var(--space-3xl);
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-2xl);
+  --button-icon-size: var(--size-icon-lg);
+}
+
+.ds-button[data-variant="primary"][data-size="sm"][data-icon-only],
+.ds-button[data-variant="secondary"][data-size="sm"][data-icon-only] {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  gap: 0;
+}
+
+/* Tertiary sizes */
+
+.ds-button[data-variant="tertiary"][data-size="sm"] {
+  padding-block: var(--space-xs);
+  gap: var(--space-md);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-3xl);
+  --button-icon-size: var(--size-icon-sm);
+}
+
+.ds-button[data-variant="tertiary"][data-size="md"],
+.ds-button[data-variant="tertiary"][data-size="lg"] {
+  padding-block: var(--space-lg);
+  gap: var(--space-md);
+  line-height: var(--line-height-2xl);
+  --button-icon-size: var(--size-icon-lg);
+}
+
+.ds-button[data-variant="tertiary"][data-size="md"] {
+  font-size: var(--font-size-sm);
+}
+
+.ds-button[data-variant="tertiary"][data-size="lg"] {
+  font-size: var(--font-size-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-button {
+    transition: none;
+  }
+}
